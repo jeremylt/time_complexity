@@ -127,17 +127,17 @@ pub fn is_prime(num: i64) -> bool {
 }
 
 // ----------------------------------------------------------------------------
-/// 'is_prime'
+/// 'sum_prime'
 ///
-/// Checks for primality by checking every value less than or equal to sqrt(num)
+/// Computes the sum of all primes in the range [1, num], inclusive
 ///
 /// # arguments
 ///
-/// * `num` - number to check primality
+/// * `num` - upper boundof range
 ///
 /// # return
 ///
-/// * `true` if `num` is prime, otherwise `false`
+/// * sum of primes in range from 1 to `num`
 ///
 /// ```
 /// # use time_complexity::{is_prime, sum_primes};
