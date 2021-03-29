@@ -133,7 +133,8 @@ pub fn is_prime(num: i64) -> bool {
 ///
 /// # arguments
 ///
-/// * `num` - upper boundof range
+/// * `num`      - upper bound of range
+/// * 'is_prime' - primality checking function
 ///
 /// # return
 ///
@@ -153,6 +154,66 @@ where
     F: Fn(i64) -> bool,
 {
     (2..=num).fold(0, |acc, i| if is_prime(i) { acc + i } else { acc })
+} // ----------------------------------------------------------------------------
+/// 'sum_prime_seive'
+///
+/// Computes the sum of all primes in the range [1, num], inclusive with a prime
+///   number seive
+///
+/// # arguments
+///
+/// * `num` - upper bound of range
+///
+/// # return
+///
+/// * sum of primes in range from 1 to `num`
+///
+/// ```
+/// # use time_complexity::sum_primes_seive;
+/// let prime = 179;
+/// assert_eq!(3_266, sum_primes_seive(prime));
+///
+/// let composite = 180;
+/// assert_eq!(3_266, sum_primes_seive(composite));
+/// ```
+// ----------------------------------------------------------------------------
+pub fn sum_primes_seive(num: i64) -> i64 {
+    // Check for early return
+    if num <= 1 {
+        return 0;
+    };
+
+    // Boolean array of odd numbers
+    let upper = (num - 1) / 2;
+    let mut seive = vec![true; upper as usize];
+
+    // Initalize sum
+    let mut sum = 2;
+
+    // Sieve array
+    let sqrt_upper = (upper as f64).sqrt() as i64;
+    assert!((sqrt_upper as usize) < seive.len());
+    for i in 0..sqrt_upper {
+        if seive[i as usize] {
+            let prime = 2 * i + 3; // Note: formula comes from only tracking odd values
+            sum += prime;
+
+            let prime_squared_index = 2 * i * i + 6 * i + 3;
+            for j in (prime_squared_index..upper).step_by(prime as usize) {
+                seive[j as usize] = false;
+            }
+        }
+    }
+
+    // Count remaining primes in sum
+    sum + seive
+        .iter()
+        .enumerate()
+        .skip(sqrt_upper as usize)
+        .fold(
+            0,
+            |acc, (i, &prime)| if prime { acc + 2 * i + 3 } else { acc },
+        ) as i64
 }
 
 // ----------------------------------------------------------------------------
