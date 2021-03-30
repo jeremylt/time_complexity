@@ -1,6 +1,6 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use time_complexity::{
-    is_prime, is_prime_all, is_prime_half, is_prime_sqrt, sum_primes, sum_primes_seive,
+    is_prime, is_prime_all, is_prime_half, is_prime_sqrt, sum_primes, sum_primes_sieve,
 };
 
 // ----------------------------------------------------------------------------
@@ -110,16 +110,16 @@ pub fn sum_primes_idiomatic_benchmark(c: &mut Criterion) {
 }
 
 // ----------------------------------------------------------------------------
-// Benchmark prime number seive
+// Benchmark prime number sieve
 // ----------------------------------------------------------------------------
-pub fn sum_primes_seive_benchmark(c: &mut Criterion) {
-    let mut group = c.benchmark_group("sum primes - seive");
+pub fn sum_primes_sieve_benchmark(c: &mut Criterion) {
+    let mut group = c.benchmark_group("sum primes - sieve");
 
-    group.bench_function("sum_primes_seive 1789", |b| {
-        b.iter(|| sum_primes_seive(black_box(SMALL)))
+    group.bench_function("sum_primes_sieve 1789", |b| {
+        b.iter(|| sum_primes_sieve(black_box(SMALL)))
     });
-    group.bench_function("sum_primes_seive 17903", |b| {
-        b.iter(|| sum_primes_seive(black_box(LARGE)))
+    group.bench_function("sum_primes_sieve 17903", |b| {
+        b.iter(|| sum_primes_sieve(black_box(LARGE)))
     });
 }
 
@@ -135,7 +135,7 @@ criterion_group!(
     sum_primes_sqrt_benchmark,
     is_prime_idiomatic_benchmark,
     sum_primes_idiomatic_benchmark,
-    sum_primes_seive_benchmark,
+    sum_primes_sieve_benchmark,
 );
 criterion_main!(benches);
 

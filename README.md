@@ -37,7 +37,7 @@ The function `is_prime_sqrt` use a prime checking algorithm with a time complexi
 
 An algorithm with higher time complexity can have a cumulative effect if called frequently enough.
 
-The function `sum_primes` accepts an upper bound and a prime checking function as arugments, so benchmarking this function helps demonstrate the cumulative effect of repeatedly calling our `sum_prime_*` functions with a different time complexities.
+The function `sum_primes` accepts an upper bound and a prime checking function as arguments, so benchmarking this function helps demonstrate the cumulative effect of repeatedly calling our `sum_prime_*` functions with a different time complexities.
 
 The function `sum_primes_seive` is also provided to demonstrate an algorithm with much better time complexity for finding all prime numbers in a range.
-Interestingly, the prime number seive will only take twice as much time to find all primes from `2` to `num` as verifying that `num` is prime with `is_prime_sqrt`.
+Interestingly, the prime number sieve will only take twice as much time to find all primes from `2` to `num` as verifying that `num` is prime with `is_prime_sqrt`.
