@@ -21,3 +21,16 @@ To test
 To benchmark
 
     cargo bench
+
+## Cumulative Effects
+
+An algorithm with higher time complexity can have a cumulative effect if called frequently enough.
+
+The function `sum_primes` accepts an upper bound and a prime checking function as arugments, so benchmarking this function helps demonstrate the cumulative effect of repeatedly calling this function with a higher time complexity.
+
+The function `sum_primes_seive` is also provided to demonstrate an algorithm with much better time complexity for finding all prime numbers in a range.
+
+## Live Link
+
+An online demo can be seen on repl.it:
+https://replit.com/@jeremylt/timecomplexity
