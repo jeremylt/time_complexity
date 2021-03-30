@@ -32,5 +32,5 @@ The function `sum_primes_seive` is also provided to demonstrate an algorithm wit
 
 ## Live Link
 
-An online demo can be seen on repl.it:
+An online demo can be seen on repl.com:
 https://replit.com/@jeremylt/timecomplexity
